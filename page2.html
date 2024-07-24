@@ -13,18 +13,25 @@
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
     </head>
     <body>
-        <h3>Give each track a rating!</h3>
+        <h3 id="heading"style="text-align:center;">Give each track a rating!</h3>
         <div id="trackNumberName" style="text-align:center;"></div>
-        <div class="dropdown" style="text-align:center;">
-            <button class="dropbtn" style="text-align:center;">Dropdown</button>
-            <div class="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
+        
+        
+        <div class="dropdown">
+            <button onclick="myFunction()" id="dropbutton" class="dropbtn">Rate this track</button>
+            <button id="next_button">Next</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#">Perfect (5)</a>
+              <a href="#">Amazing (4)</a>
+              <a href="#">Good (3)</a>
+              <a href="#">Okay (2)</a>
+              <a href="#">Bad (1)</a>
             </div>
-        </div>
+          </div>
 
-        <button id="next" style="text-align:center;">Next</button>
+          <div id="albumCover" style="text-align:center">
+            <!-- Album cover will be displayed here -->
+        </div>
 
             <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
