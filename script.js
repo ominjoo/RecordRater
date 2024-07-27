@@ -4,9 +4,6 @@ $(document).ready(() => {
         typeSpeed: 100,
         backSpeed: 70,
         loop: true,
-        onComplete: () => {
-            $("#confirm").show();
-        }
     });
 
     $("#confirm").hide();
@@ -25,12 +22,13 @@ $(document).ready(() => {
                 console.error('No releases found');
                 return;
             }
-
             const randomInt = Math.floor(Math.random() * data.releases.length);
             const albumRelease = data.releases[randomInt];
+            //console.log(albumRelease);
             const albumID = albumRelease.id;
 
             const coverURL = `https://coverartarchive.org/release/${albumID}/front`;
+            console.log(coverURL);
             const albumName = albumRelease.title;
             const artistName = albumRelease['artist-credit'][0].name;
             const tracksNum = albumRelease.media[0]['track-count'];

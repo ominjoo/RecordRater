@@ -1,4 +1,4 @@
-
+$('#title').hide();
 const url = new URL(window.location.href);
 const albumID = url.searchParams.get('id');
 console.log(albumID);
@@ -15,31 +15,70 @@ fetch(`https://musicbrainz.org/ws/2/release/${albumID}?inc=recordings&fmt=json`,
 .then(releaseData => {
     const tracks = releaseData.media[0]?.tracks;
     let counter = 0;
+    let albumRating = 0;
+    let ratingClass = '';
     const ratings = [];
+    const ratingClasses = [];
+
     $('#trackNumberName').html(`
         <p>Track ${counter + 1}: ${tracks[counter].title}</p>
     `);
 
     $("#next_button").click(async() => {
-        if(counter < tracks.length - 1){
+        counter++;
+        console.log(counter);
+        if(counter <= tracks.length){
             const rating = $('#dropbutton').text();
-            if(rating != 'Rate this track') {
-                ratings.push(rating);
-                console.log(ratings);
-            } else {
-                alert("Please select a rating for this track before proceeding!")
+            switch (rating) {
+                case 'Perfect (5)':
+                    albumRating += 5;
+                    ratingClass = 'rating-perfect';
+                    break;
+                case 'Amazing (4)':
+                    albumRating += 4;
+                    ratingClass = 'rating-amazing';
+                    break;
+                case 'Good (3)':
+                    albumRating += 3;
+                    ratingClass = 'rating-good';
+                    break;
+                case 'Okay (2)':
+                    albumRating += 2;
+                    ratingClass = 'rating-okay';
+                    break;
+                case 'Bad (1)':
+                    albumRating += 1;
+                    ratingClass = 'rating-bad';
+                    break;
+                default:
+                    alert("Please select a rating for this track before proceeding!")
+                    counter--;
+                    return;
             }
-            counter++
-            $('#trackNumberName').html(`
-                <p>Track ${counter + 1}: ${tracks[counter].title}</p>
-            `);
+            ratings.push(rating);
+            ratingClasses.push(ratingClass);
+            console.log(ratings + albumRating + ratingClass);
 
-            
         } else {
-            displayFinalReview();
+            albumRating /= tracks.length;
+            albumRating = albumRating.toFixed(2) * 2.0;
+
+            displayFinalReview(tracks, albumRating, ratingClasses);
         }
-        $('#dropbutton').text('Rate this track');
+
+        if(counter < tracks.length) {
+            $('#trackNumberName').html(`
+                    <p>Track ${counter + 1}: ${tracks[counter].title}</p>
+            `);
+            $('#dropbutton').text('Rate this track');
+        } else {
+            $("#heading").hide();
+            $("#dropbutton").hide();
+            $("#trackNumberName").hide();
+            $('#next_button').html('Finish')
+        }
     });
+
     const menu = document.getElementById('myDropdown');
     const button = document.getElementById('dropbutton');
 
@@ -76,14 +115,35 @@ window.onclick = function(event) {
     }
 }
 
-function displayFinalReview() {
-    $("#heading").hide();
-    $("#dropbutton").hide();
-    $("#next_button").hide();
-    $("#trackNumberName").hide();
-
+function displayFinalReview(tracks, albumRating, ratingClasses) {
+    let ratingsList = '';
+    $('#next_button').hide();
     $('#albumCover').html(`
-            <img src="${coverURL}" alt="" style="max-width: 300px;">
+            <img src="${coverURL}" alt="" style="max-width: 250px;">
         `);
+    $('#title').show();
+    console.log(ratingClasses);
+    tracks.forEach((track, index) => {
+        ratingsList += `<li class="rating-block ${ratingClasses[index]}">${index + 1}. ${track.title}</li>`;
+    });
+    $('#trackRatings').html(ratingsList);
+    $('#finalRating').html("Album: " + albumRating + "/10");
+    $('#title').html("Reviewing " );
+    
 
+    document.body.style.setProperty('--background-url', `url('${coverURL}')`);
+
+    const style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = `
+    body::before {
+      background-image: var(--background-url); 
+      background-repeat: no-repeat 
+      background-position: center;
+      background-size: cover;
+    }
+    `;
+    document.head.appendChild(style);
+
+    console.log("final rating:" + albumRating + "/ 5");
 }
