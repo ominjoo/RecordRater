@@ -7,7 +7,6 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-
         <!-- Title of the page -->
         <title>RecordRanker</title>
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
@@ -16,23 +15,35 @@
         <h3 id="heading"style="text-align:center;">Give each track a rating!</h3>
         <div id="trackNumberName" style="text-align:center;"></div>
         
-        
-        <div class="dropdown">
+        <div class="center">
+        <div style="text-align: center" id="dropdown">
             <button onclick="myFunction()" id="dropbutton" class="dropbtn">Rate this track</button>
-            <button id="next_button">Next</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="#">Perfect (5)</a>
-              <a href="#">Amazing (4)</a>
-              <a href="#">Good (3)</a>
-              <a href="#">Okay (2)</a>
-              <a href="#">Bad (1)</a>
+            <div id="myDropdown" style="text-align: center" class="dropdown-content">
+                <a href="#">Perfect (5)</a>
+                <a href="#">Amazing (4)</a>
+                <a href="#">Good (3)</a>
+                <a href="#">Okay (2)</a>
+                <a href="#">Bad (1)</a>
             </div>
-          </div>
-
-          <div id="albumCover" style="text-align:center">
-            <!-- Album cover will be displayed here -->
+        </div>
+        </div>
+        <div class="button-container" style="text-align: center;">
+            <button id="next_button">Next</button>
         </div>
 
+        <div class="center-container">
+          <div class="side-by-side">
+            <h5 id="title">Reviewing</h5>
+            <div id="albumCover">
+                <!-- Album cover will be displayed here -->
+            </div>
+            
+          </div>
+          <div id="Ratings">
+            <ul id="trackRatings"></ul>
+            <p id="finalRating"></p>
+          </div>
+        </div>
             <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script src=script2.js ></script>
