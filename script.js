@@ -10,25 +10,31 @@ $(document).ready(() => {
 
     const getAlbum = async (artist, album) => {
         try {
-            const albumGeneralResponse = await fetch(`https://musicbrainz.org/ws/2/release/?fmt=json&query=release:${encodeURIComponent(album)}%20AND%20artist:${encodeURIComponent(artist)}`, {
+            const albumGeneralResponse = await fetch(`https://musicbrainz.org/ws/2/release/?fmt=json&query=release:${encodeURIComponent(album)}%20AND%20artist:${encodeURIComponent(artist)}&limit=5`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json'
                 }
             });
-
+            
             const data = await albumGeneralResponse.json();
             if (!data.releases || data.releases.length === 0) {
                 console.error('No releases found');
                 return;
             }
-            const randomInt = Math.floor(Math.random() * data.releases.length);
-            const albumRelease = data.releases[randomInt];
+
+            let count = Math.floor(Math.random() * data.releases.length);
+        
+            
+            const albumRelease = data.releases[count];
+            
             //console.log(albumRelease);
             const albumID = albumRelease.id;
+            
+            
 
             const coverURL = `https://coverartarchive.org/release/${albumID}/front`;
-            console.log(coverURL);
+            
             const albumName = albumRelease.title;
             const artistName = albumRelease['artist-credit'][0].name;
             const tracksNum = albumRelease.media[0]['track-count'];
@@ -48,10 +54,7 @@ $(document).ready(() => {
     };
 
     const displayAlbumInfo = (coverURL, albumName, artistName, tracksNum, date, statusType) => {
-        $('#albumCover').html(`
-            <img src="${coverURL}" alt="" style="max-width: 300px;">
-        `);
-
+        
         if (date) {
             $('#albumName').html(`
                 <p>${artistName} - ${albumName} (${date})</p>
@@ -69,27 +72,41 @@ $(document).ready(() => {
         $('#tracks').html(`
             <p>Tracks: ${tracksNum}</p>
         `);
+
+        let coverImage = document.createElement('img');
+        coverImage.src = coverURL;
+        coverImage.className = 'cover'; // Apply CSS class
+        document.getElementById('albumCover').appendChild(coverImage);
+
+        coverImage.onload = () => {
+            document.querySelector('.disc-image').style.display = 'none'; // Hide disc image
+            coverImage.style.display = 'block'; // Show cover image
+        };
     };
 
     $("#search").click(async (event) => {
+        document.querySelector('.disc-image').style.display = 'block';
+       
         event.preventDefault();
         $("#confirm").hide();
         let artist = $('#artistInput').val().trim();
         let album = $('#albumInput').val().trim();
+        
+        
+    
 
         if (!artist || !album) {
             alert('Please enter artist and album name.');
+            document.querySelector('.disc-image').style.display = 'none';
             return;
         }
 
         try {
-            $("#search").text("Searching...");
             console.log(artist + " " + album);
             await getAlbum(artist, album);
-            $("#search").text("Find other release");
             $("#confirm").show();
         } catch (error) {
             console.error('Error:', error);
-        }
+        } 
     });
 });

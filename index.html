@@ -28,23 +28,23 @@
         
         <form id="albumForm" style="text-align:center;">
             <input type="text" id="artistInput" required placeholder="Artist"><br><br>
-            
             <input type="text" id="albumInput" required placeholder="Album"><br><br>
             
-            <button type="submit" id="search">Search</button>
+            <button type="submit" id="search" >Search</button>
         </form>
 
-        <div id="albumCover" style="text-align:center">
+        <div id="albumCover" class="cover-container" style="text-align:center">
+            <img src="https://i.postimg.cc/J7cm8p23/vinylblack.png" alt="Disc" class="disc-image">
             <!-- Album cover will be displayed here -->
         </div>
 
-       <div id="albumName" style="text-align: center;"></div>
-       <div id="tracks" style="text-align: center;"></div>
-       <div id="status" style="text-align: center;"></div>
-       <div class="button-container" style="text-align: center;">
-       <button id="confirm">Review this release</button>
-       </div>
-
+        <div id="albumName" style="text-align: center;"></div>
+        <div id="tracks" style="text-align: center;"></div>
+        <div id="status" style="text-align: center;"></div>
+        <div class="button-container" style="text-align: center;">
+            <button id="confirm">Review this release</button>
+        </div>
+        
         <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src=script.js ></script>

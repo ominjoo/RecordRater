@@ -1,11 +1,12 @@
 $('#title').hide();
+$('#finalRating').hide();
 const url = new URL(window.location.href);
 const albumID = url.searchParams.get('id');
 console.log(albumID);
 
 const coverURL = `https://coverartarchive.org/release/${albumID}/front`;
 
-fetch(`https://musicbrainz.org/ws/2/release/${albumID}?inc=recordings&fmt=json`, {
+fetch(`https://musicbrainz.org/ws/2/release/${albumID}?inc=artist-credits+recordings&fmt=json`, {
     method: 'GET',
     headers: {
         'Accept': 'application/json'
@@ -13,6 +14,11 @@ fetch(`https://musicbrainz.org/ws/2/release/${albumID}?inc=recordings&fmt=json`,
 })
 .then(response => response.json())
 .then(releaseData => {
+    const albumName = releaseData.title;
+    console.log(albumName);
+    const artistName = releaseData['artist-credit'][0].artist.name;
+    console.log(artistName);
+
     const tracks = releaseData.media[0]?.tracks;
     let counter = 0;
     let albumRating = 0;
@@ -63,7 +69,7 @@ fetch(`https://musicbrainz.org/ws/2/release/${albumID}?inc=recordings&fmt=json`,
             albumRating /= tracks.length;
             albumRating = albumRating.toFixed(2) * 2.0;
 
-            displayFinalReview(tracks, albumRating, ratingClasses);
+            displayFinalReview(tracks, albumRating, ratingClasses, albumName, artistName);
         }
 
         if(counter < tracks.length) {
@@ -115,20 +121,32 @@ window.onclick = function(event) {
     }
 }
 
-function displayFinalReview(tracks, albumRating, ratingClasses) {
-    let ratingsList = '';
+function displayFinalReview(tracks, albumRating, ratingClasses, albumName, artistName) {
     $('#next_button').hide();
+    let ratingsList = '';
+    const colorChart = [
+        '<li class="rating-block rating-perfect">Perfect</li>',
+        '<li class="rating-block rating-amazing">Amazing</li>',
+        '<li class="rating-block rating-good">Good</li>',
+        '<li class="rating-block rating-okay">Okay</li>',
+        '<li class="rating-block rating-bad">Bad</li>'
+    ]; 
+    $('#colorGuide').html(colorChart);
     $('#albumCover').html(`
-            <img src="${coverURL}" alt="" style="max-width: 250px;">
+            <img src="${coverURL}" alt="" style="max-width: 260px;">
         `);
+
+    $('#title').html("Album Review: <br>\"" + albumName + "\"<br>by " + artistName);
     $('#title').show();
+
     console.log(ratingClasses);
     tracks.forEach((track, index) => {
+        console.log(ratingsList);
         ratingsList += `<li class="rating-block ${ratingClasses[index]}">${index + 1}. ${track.title}</li>`;
     });
     $('#trackRatings').html(ratingsList);
-    $('#finalRating').html("Album: " + albumRating + "/10");
-    $('#title').html("Reviewing " );
+    $('#finalRating').html("Album Rating: " + albumRating + "/10");
+    $('#finalRating').show();
     
 
     document.body.style.setProperty('--background-url', `url('${coverURL}')`);
@@ -145,5 +163,5 @@ function displayFinalReview(tracks, albumRating, ratingClasses) {
     `;
     document.head.appendChild(style);
 
-    console.log("final rating:" + albumRating + "/ 5");
+    
 }
