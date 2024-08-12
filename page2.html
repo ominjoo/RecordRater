@@ -10,31 +10,35 @@
         <!-- Title of the page -->
         <title>RecordRanker</title>
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
     </head>
     <body>
-        <h3 id="heading"style="text-align:center;">Give each track a rating!</h3>
-        <div id="trackNumberName" style="text-align:center;"></div>
+        <h2 id="heading" 
+        style="text-align: center; font-family: 'Inter'; color:pink; letter-spacing: 2px;">
+        Give each track a rating!
+        </h2>
+        <div id="trackNumberName" style="text-align:center; font-family:'Courier New', Courier, monospace; padding-top: 20px;"></div>
         
         <div class="center">
-        <div style="text-align: center" id="dropdown">
-            <button onclick="myFunction()" id="dropbutton" class="dropbtn">Rate this track</button>
-            <div id="myDropdown" style="text-align: center" class="dropdown-content">
-                <a href="#">Perfect (5)</a>
-                <a href="#">Amazing (4)</a>
-                <a href="#">Good (3)</a>
-                <a href="#">Okay (2)</a>
-                <a href="#">Bad (1)</a>
+            <div style="text-align: center; padding-top: 20px;" id="dropdown">
+                <button onclick="myFunction()" id="dropbutton" class="dropbtn">Rate this track</button>
+                <div id="myDropdown" style="text-align: center" class="dropdown-content">
+                    <a href="#">Perfect (5)</a>
+                    <a href="#">Amazing (4)</a>
+                    <a href="#">Good (3)</a>
+                    <a href="#">Okay (2)</a>
+                    <a href="#">Bad (1)</a>
+                </div>
             </div>
         </div>
-        </div>
-        <div class="button-container" style="text-align: center;">
-            <button id="next_button">Next</button>
+        <div class="button-container" style="text-align: center;padding-top: 40px;">
+            <button id="next_button" class="glowButton";>Next</button>
         </div>
 
         <div class="center-container">
             <div class="top-layer">
                 <p id="title"></p>
-                <div id="albumCover">
+                <div id="albumCover2">
                     <!-- Album cover will be displayed here -->
                 </div>
             </div>
@@ -42,8 +46,9 @@
             <div class="middle-layer">
                 <ul id="trackRatings"></ul>
                 <ul id="colorGuide"></ul>
+                
             </div>
-            <p id="finalRating"></p>
+            <p id="finalRating" ></p>
         </div>
 
             <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>

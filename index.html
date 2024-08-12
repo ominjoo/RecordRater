@@ -13,36 +13,49 @@
        
         <!-- Link to external stylesheet -->
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
     </head>
     <body>
-        
+        <div class = "subheading" style="text-align: center;" >
+            <h3>
+                For lovers of <span class = "auto-typed"></span>
+            </h3>
+        </div>
+
         <header style="text-align: center;">
-            <h1>Show Off Your Music Taste!</h1>
+            <h1>Review a record and share!</h1>
         </header>
         
-        <div class = "subheading" style="text-align:center;">
-            <h2>
-                For lovers of <span class = "auto-typed"></span>
-            </h2>
-        </div>
         
-        <form id="albumForm" style="text-align:center;">
-            <input type="text" id="artistInput" required placeholder="Artist"><br><br>
-            <input type="text" id="albumInput" required placeholder="Album"><br><br>
+        
+        <form id="albumForm" style="text-align:center; padding-bottom: 20px;">
+            "
+            <input type="text" id="albumInput" required placeholder="[Album Name]">
+            "
+            by
+            <input type="text" id="artistInput" required placeholder="[Artist]">
             
-            <button type="submit" id="search" >Search</button>
+            <button type="submit" id="search" class="glowButton" >Search</button>
         </form>
 
-        <div id="albumCover" class="cover-container" style="text-align:center">
+        <div id="no-coverMessage" 
+            style="display: none; font-family: 'Inter'; text-align:center; font-size: 12px;"> 
+            [No album cover in database. <br>
+            Press refresh for best results.] 
+        </div>
+
+        <div id="albumCover" class="cover-container" style="text-align:center;">
             <img src="https://i.postimg.cc/J7cm8p23/vinylblack.png" alt="Disc" class="disc-image">
             <!-- Album cover will be displayed here -->
         </div>
 
-        <div id="albumName" style="text-align: center;"></div>
-        <div id="tracks" style="text-align: center;"></div>
-        <div id="status" style="text-align: center;"></div>
+        <div class = "albumInfo">
+            <div id="albumName" style="text-align: center;"></div>
+            <div id="tracks" style="text-align: center;"></div>
+            <div id="status" style="text-align: center;"></div>
+        </div>
         <div class="button-container" style="text-align: center;">
-            <button id="confirm">Review this release</button>
+            <button id="confirm" class="glowButton">Review this release</button>
         </div>
         
         <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
