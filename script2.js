@@ -132,7 +132,7 @@ function displayFinalReview(tracks, albumRating, ratingClasses, albumName, artis
         '<li class="rating-block rating-bad">Bad</li>'
     ]; 
     $('#colorGuide').html(colorChart);
-    $('#albumCover').html(`
+    $('#albumCover2').html(`
             <img src="${coverURL}" alt="" style="max-width: 260px;">
         `);
 

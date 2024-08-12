@@ -1,6 +1,6 @@
 $(document).ready(() => {
     var typed = new Typed(".auto-typed", {
-        strings: ["rock", "rap", "pop", "rnb", "alternative", "all music!"],
+        strings: ["rock.", "rap.", "pop.", "rnb.", "alternative.", "music."],
         typeSpeed: 100,
         backSpeed: 70,
         loop: true,
@@ -10,7 +10,7 @@ $(document).ready(() => {
 
     const getAlbum = async (artist, album) => {
         try {
-            const albumGeneralResponse = await fetch(`https://musicbrainz.org/ws/2/release/?fmt=json&query=release:${encodeURIComponent(album)}%20AND%20artist:${encodeURIComponent(artist)}&limit=5`, {
+            const albumGeneralResponse = await fetch(`https://musicbrainz.org/ws/2/release/?fmt=json&query=release:${encodeURIComponent(album)}%20AND%20artist:${encodeURIComponent(artist)}&limit=10`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json'
@@ -19,7 +19,7 @@ $(document).ready(() => {
             
             const data = await albumGeneralResponse.json();
             if (!data.releases || data.releases.length === 0) {
-                console.error('No releases found');
+                alert("No results for \"" + album + "\" by " + artist + ". Make sure spelling is accurate." );
                 return;
             }
 
@@ -49,7 +49,7 @@ $(document).ready(() => {
             });
 
         } catch (error) {
-            console.error('Error fetching album:', error);
+            console.error('Error:', error);
         }
     };
 
@@ -73,6 +73,7 @@ $(document).ready(() => {
             <p>Tracks: ${tracksNum}</p>
         `);
 
+        document.getElementById('albumCover').style.display = "block";
         let coverImage = document.createElement('img');
         coverImage.src = coverURL;
         coverImage.className = 'cover'; // Apply CSS class
@@ -82,19 +83,30 @@ $(document).ready(() => {
             document.querySelector('.disc-image').style.display = 'none'; // Hide disc image
             coverImage.style.display = 'block'; // Show cover image
         };
+
+        coverImage.onerror = () => {
+            console.log("no image");
+            document.getElementById('no-coverMessage').style.display = "block";
+            document.getElementById('albumCover').style.display = "none";
+        }
+        
+
     };
 
     $("#search").click(async (event) => {
+        document.getElementById('no-coverMessage').style.display = "none"
+
+        if(document.querySelector('.cover-container img.cover')) {
+            const coverImage = document.querySelector('.cover-container img.cover');
+            coverImage.style.display = 'none';
+        }
+
         document.querySelector('.disc-image').style.display = 'block';
-       
         event.preventDefault();
         $("#confirm").hide();
         let artist = $('#artistInput').val().trim();
         let album = $('#albumInput').val().trim();
         
-        
-    
-
         if (!artist || !album) {
             alert('Please enter artist and album name.');
             document.querySelector('.disc-image').style.display = 'none';
@@ -102,6 +114,7 @@ $(document).ready(() => {
         }
 
         try {
+            $("#search").html('Refresh');
             console.log(artist + " " + album);
             await getAlbum(artist, album);
             $("#confirm").show();
