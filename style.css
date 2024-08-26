@@ -22,17 +22,30 @@ body::before {
   z-index: -1;
 }
 
+
 h1 {
   font-family: 'Inter';
   letter-spacing: 2px;
   color:pink
 }
 
+/* auto-typed */
 .subheading {
-  font-family:'Courier New', Courier, monospace;
+  font-family: 'Inter';
   padding-top: 20px;
+  color: rgba(0, 0, 0, 0.505)
 }
 
+footer {
+  font-family: 'Inter';
+  color: rgba(177, 54, 177, 0.672);
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* artist and album name text input slots ----------------------------------- */
 #albumForm{
   padding: 10px;
   font-family:'Courier New', Courier, monospace;
@@ -45,7 +58,7 @@ input[type=text] {
   box-sizing: border-box;
   border: none;
   background: transparent;
-  border-bottom: 1.5px solid black;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.377);
   outline: none;
   font-family:'Courier New', Courier, monospace;
   font-size: 18px;
@@ -55,8 +68,7 @@ input[type=text] {
 }
 
 input::placeholder {
-  color: white;
-  opacity: 0.5;
+  color: rgba(255, 255, 255, 0.485);
   font-size: 18px;
 }
 
@@ -64,222 +76,11 @@ input:hover {
   transform: scale(1.06);
 }
 
-
-.glowButton {
-  background-color:rgb(249, 133, 153); /* Darker purple for the button background */
-  border-radius: 100px;
-  box-shadow: 
-    rgba(128, 0, 128, .3) 0 -25px 18px -14px inset, /* Brighter purple inner glow */
-    rgba(128, 0, 128, .25) 0 1px 2px, 
-    rgba(128, 0, 128, .25) 0 2px 4px, 
-    rgba(128, 0, 128, .25) 0 4px 8px, 
-    rgba(128, 0, 128, .25) 0 8px 16px, 
-    rgba(128, 0, 128, .25) 0 16px 32px; /* Brighter purple shadow */
-  color:pink; /* White text color for better contrast */
-  cursor: pointer;
-  display: inline-block;
-  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
-  padding: 7px 20px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 250ms;
-  border: 0;
-  font-size: 16px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+/* -------------------------------------------------------------------------- */
+#search {
+  margin-top: 10px;
 }
-
-.glowButton:hover {
-  box-shadow: 
-    rgba(230, 37, 230, 0.5) 0 -25px 18px -14px inset, /* Brighter purple inner glow on hover */
-    rgba(128, 0, 128, .35) 0 1px 2px, 
-    rgba(128, 0, 128, .35) 0 2px 4px, 
-    rgba(128, 0, 128, .35) 0 4px 8px, 
-    rgba(128, 0, 128, .35) 0 8px 16px, 
-    rgba(255, 0, 255, 0.5) 0 16px 32px; /* Brighter purple shadow on hover */
-  transform: scale(1.05);
-}
-
-
-.albumInfo {
-  font-family:'Courier New', Courier, monospace;
-
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/* Dropdown Button */
-.dropbtn {
-  background-color: rgba(255, 192, 203, 0.545);
-  color: white;
-  padding: 16px;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-  width:150px;
-  transition: all 250ms;
-  border-radius: 4px;
-  font-family: 'Inter'
-}
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover {
-  background-color:pink;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  transform: scale(1.08);
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  text-align: center;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  font-family: 'Inter';
-  display: none;
-  background-color: white;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  text-align: center;
-  width:150px;
-  z-index: 1;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  transition: all 250ms;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  transform: scale(1.08);
-}
-
-.dropdown-content a:nth-child(1):hover {
-  background-color: blueviolet; /* Example color for first item */
-}
-
-.dropdown-content a:nth-child(2):hover {
-  background-color: green; /* Example color for first item */
-}
-
-.dropdown-content a:nth-child(3):hover {
-  background-color: rgb(237, 187, 61); /* Example color for first item */
-}
-
-.dropdown-content a:nth-child(4):hover {
-  background-color: darkorange; /* Example color for first item */
-}
-
-.dropdown-content a:nth-child(5):hover {
-  background-color: red; /* Example color for first item */
-}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
-
-
-
-
-/* Rating block styles */
-.rating-block {
-  display: block;
-  width: fit-content;
-  list-style-type: none;
-  padding: 5px;
-  border-radius: 4px;
-  color: white; /* Text color inside the rating block */
-  font-size: 1.2em;
-
-  max-width: 300px;
-  word-wrap: break-word; /* Break words that exceed max-width */
-  overflow-wrap: break-word;
-}
-
-/* Different background colors for different ratings */
-.rating-perfect {
-  background-color: blueviolet; 
-}
-
-.rating-amazing {
-  background-color: green; 
-}
-
-.rating-good {
-  background-color: rgb(237, 187, 61); 
-}
-
-.rating-okay {
-  background-color: darkorange; 
-}
-
-.rating-bad {
-  background-color: red;
-}
-
-
-.center-container {
-  display: flex;
-  flex-direction:column;
-  align-items: center;
-}
-
-.top-layer {
-  display: flex;
-  justify-content: space-between; /* Ensures items are spaced evenly within the container */
-  align-items: center;
-  gap: 50px;
-  
-}
-
-.middle-layer {
-  display: flex;
-  justify-content: space-between;
-}
-
-
-#title {
-  display: block;
-  width: fit-content;
-  list-style-type: none;
-  
-  border-radius: 5px;
-  margin: 5px 0;
-  color: white; /* Text color inside the rating block */
-  font-size: 1.5em;
-  background-color:dodgerblue;
-  text-align: center;
-}
-
-#finalRating {
-  display: block;
-  width: fit-content;
-  list-style-type: none;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 5px 0;
-  color: white; /* Text color inside the rating block */
-  font-size: 1.2em;
-  background-color:dodgerblue;
-  text-align: center;
-}
-
-#trackRatings {
-  list-style-type: none;
-  padding: 0;
-  width: 100%;
-}
-
+/* disc loading image and cover art for page 1 on search ---------------------*/
 .cover-container {
   margin-left: auto;
   margin-right: auto;
@@ -287,7 +88,6 @@ input:hover {
   width: 300px; /* Adjust size as needed */
   height: 300px; /* Adjust size as needed */
 }
-
 
 .disc-image {
   padding: 25px;
@@ -315,9 +115,9 @@ input:hover {
           to { transform: rotate(360deg) }
       }
 
-  /* Cover image styling (hidden initially) */
+
+/* Cover image styling (hidden initially) */
 .cover-container img.cover {
- 
   position: absolute;
   top: 0;
   left: 0;
@@ -325,5 +125,262 @@ input:hover {
   height: 100%;
   border-radius: 4%;
   object-fit: cover;
-  display: none; /* Hide cover image initially */
+  display: none;
 }
+
+/* -------------------------------------------------------------------------- */
+
+.glowButton {
+  background-color:rgb(249, 133, 153); 
+  border-radius: 100px;
+  box-shadow: 
+    rgba(128, 0, 128, .3) 0 -25px 18px -14px inset, 
+    rgba(128, 0, 128, .25) 0 1px 2px, 
+    rgba(128, 0, 128, .25) 0 2px 4px, 
+    rgba(128, 0, 128, .25) 0 4px 8px, 
+    rgba(128, 0, 128, .25) 0 8px 16px, 
+    rgba(128, 0, 128, .25) 0 16px 32px; 
+  color:rgb(255, 192, 203); 
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.glowButton:hover {
+  box-shadow: 
+    rgba(230, 37, 230, 0.5) 0 -25px 18px -14px inset,
+    rgba(128, 0, 128, .35) 0 1px 2px, 
+    rgba(128, 0, 128, .35) 0 2px 4px, 
+    rgba(128, 0, 128, .35) 0 4px 8px, 
+    rgba(128, 0, 128, .35) 0 8px 16px, 
+    rgba(255, 0, 255, 0.5) 0 16px 32px;
+  transform: scale(1.05);
+}
+
+/* Dropdown Button ---------------------------------------------------------- */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown {
+  text-align: center;
+}
+
+.dropbtn {
+  background-color: rgba(255, 192, 203, 0.545);
+  color: white;
+  padding: 16px;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  width:150px;
+  transition: all 250ms;
+  border-radius: 4px;
+  font-family: 'Inter'
+}
+
+.dropbtn:hover {
+  background-color:pink;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  transform: scale(1.08);
+}
+
+.dropdown-content {
+  font-family: 'Inter';
+  display: none;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  text-align: center;
+  width:150px;
+  z-index: 1;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: all 250ms;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  transform: scale(1.08);
+}
+
+.dropdown-content a:nth-child(1):hover {
+  background-color: blueviolet;
+}
+
+.dropdown-content a:nth-child(2):hover {
+  background-color: green;
+}
+
+.dropdown-content a:nth-child(3):hover {
+  background-color: rgb(237, 187, 61); 
+}
+
+.dropdown-content a:nth-child(4):hover {
+  background-color: darkorange; 
+}
+
+.dropdown-content a:nth-child(5):hover {
+  background-color: red; 
+}
+
+.show {display:block;}
+
+/* -------------------------------------------------------------------------- */
+
+textarea {
+  width: 50%;
+  height: 150px;
+  padding: 12px 20px;
+  border: 2px solid #ffffffa8;
+  border-radius: 10px;
+  background-color: #f8f8f8a0;
+  resize: none;
+  display: none;
+  margin: 0 auto;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Rating block styles */
+.rating-block {
+  width: fit-content;
+  list-style-type: none;
+  padding: 5px;
+  border-radius: 4px;
+  color: white; 
+  font-size: 1.2em;
+  font-family: 'Montserrat';
+  font-weight: 550;
+  max-width: 300px;
+
+  display: -webkit-box;           /* Enables a flexible box layout */
+  -webkit-line-clamp: 2;          /* Limits the text to 2 lines */
+  -webkit-box-orient: vertical;   /* Sets the box to be oriented vertically */
+  overflow: hidden;               /* Hides the overflow content */
+  text-overflow: ellipsis; 
+}
+
+/* Different background colors for different ratings */
+.rating-perfect {
+  background-color: blueviolet; 
+}
+
+.rating-amazing {
+  background-color: green; 
+}
+
+.rating-good {
+  background-color: rgb(237, 187, 61); 
+}
+
+.rating-okay {
+  background-color: darkorange; 
+}
+
+.rating-bad {
+  background-color: red;
+}
+
+
+/* final page styling ------------------------------------------------------- */
+.center-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* Centers the items horizontally */
+  width: 100%; /* Ensures the container takes up the full width */
+  text-align: center;
+  gap: 15px;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+#title {
+  display: block;
+  width: fit-content;
+  list-style-type: none;
+  
+  border-radius: 5px;
+  margin: 3px;
+  color: white;
+  font-size: 1.2em;
+  background-color:dodgerblue;
+  text-align: center;
+  padding: 5px;
+  font-family: 'Montserrat';
+  font-weight: 550;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#trackRatings {
+  text-align: left;
+  align-items: left;
+  overflow: hidden; 
+}
+
+#finalRating {
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+  color: white; 
+  font-size: 1.1em;
+  background-color:dodgerblue;
+  width: fit-content;
+
+  font-family: 'Montserrat';
+  font-weight: 550;
+
+}
+
+#colorGuide {
+  width: 50%;
+  font-size: 0.7em;
+}
+
+#albumCover2{
+  width: 100%;
+}
+
+#userParagraph {
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+  color: white; 
+  font-size: 1.1em;
+  background-color:dodgerblue;
+  width: 200px;
+}
+/* -------------------------------------------------------------------------- */

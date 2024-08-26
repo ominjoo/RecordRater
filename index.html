@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<!-- The HTML document declaration -->
+
+
 <html lang="en">
     <head>
-        <!-- Meta tags for character set, description, and viewport settings -->
         <meta charset="UTF-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
 
-        <!-- Title of the page -->
         <title>RecordRanker</title>
        
-        <!-- Link to external stylesheet -->
+
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
     </head>
+
+
     <body>
         <div class = "subheading" style="text-align: center;" >
-            <h3>
-                For lovers of <span class = "auto-typed"></span>
-            </h3>
+            📀 For lovers of <span class = "auto-typed"></span>
         </div>
 
         <header style="text-align: center;">
@@ -27,39 +26,47 @@
         </header>
         
         
-        
         <form id="albumForm" style="text-align:center; padding-bottom: 20px;">
-            "
-            <input type="text" id="albumInput" required placeholder="[Album Name]">
-            "
-            by
+            "<input type="text" id="albumInput" required placeholder="[Album Name]">"
+                by
             <input type="text" id="artistInput" required placeholder="[Artist]">
-            
             <button type="submit" id="search" class="glowButton" >Search</button>
         </form>
 
+
         <div id="no-coverMessage" 
             style="display: none; font-family: 'Inter'; text-align:center; font-size: 12px;"> 
-            [No album cover in database. <br>
-            Press refresh for best results.] 
+                [No album cover in database. <br>
+                Press refresh for best results.] 
         </div>
+
 
         <div id="albumCover" class="cover-container" style="text-align:center;">
             <img src="https://i.postimg.cc/J7cm8p23/vinylblack.png" alt="Disc" class="disc-image">
-            <!-- Album cover will be displayed here -->
         </div>
 
-        <div class = "albumInfo">
+
+        <div class = "albumInfo" style= "font-family: 'Courier New', Courier, monospace;">
             <div id="albumName" style="text-align: center;"></div>
             <div id="tracks" style="text-align: center;"></div>
             <div id="status" style="text-align: center;"></div>
         </div>
+
+
         <div class="button-container" style="text-align: center;">
             <button id="confirm" class="glowButton">Review this release</button>
         </div>
         
+
         <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src=script.js ></script>
+
+        
+        <footer>
+            <p>RecordRanker 🎶 made by music lovers, for music lovers </p>
+        </footer>
     </body>
+
+
 </html>

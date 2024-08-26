@@ -81,6 +81,7 @@ fetch(`https://musicbrainz.org/ws/2/release/${albumID}?inc=artist-credits+record
             $("#heading").hide();
             $("#dropbutton").hide();
             $("#trackNumberName").hide();
+            $('#userPara').show();
             $('#next_button').html('Finish')
         }
     });
@@ -123,32 +124,35 @@ window.onclick = function(event) {
 
 function displayFinalReview(tracks, albumRating, ratingClasses, albumName, artistName) {
     $('#next_button').hide();
+    $('#userParaForm').hide();
     let ratingsList = '';
     const colorChart = [
-        '<li class="rating-block rating-perfect">Perfect</li>',
-        '<li class="rating-block rating-amazing">Amazing</li>',
-        '<li class="rating-block rating-good">Good</li>',
-        '<li class="rating-block rating-okay">Okay</li>',
-        '<li class="rating-block rating-bad">Bad</li>'
+        '<li class="rating-block rating-perfect">PERFECT</li>',
+        '<li class="rating-block rating-amazing">AMAZING</li>',
+        '<li class="rating-block rating-good">GOOD</li>',
+        '<li class="rating-block rating-okay">OKAY</li>',
+        '<li class="rating-block rating-bad">BAD</li>'
     ]; 
     $('#colorGuide').html(colorChart);
     $('#albumCover2').html(`
-            <img src="${coverURL}" alt="" style="max-width: 260px;">
+            <img src="${coverURL}" alt="" style="max-width: 240px;">
         `);
 
-    $('#title').html("Album Review: <br>\"" + albumName + "\"<br>by " + artistName);
+    $('#title').html("📻 Album Review: \"" + albumName + "\" by " + artistName);
     $('#title').show();
 
-    console.log(ratingClasses);
     tracks.forEach((track, index) => {
-        console.log(ratingsList);
+        
         ratingsList += `<li class="rating-block ${ratingClasses[index]}">${index + 1}. ${track.title}</li>`;
     });
     $('#trackRatings').html(ratingsList);
-    $('#finalRating').html("Album Rating: " + albumRating + "/10");
+    $('#finalRating').html(albumRating + "/10");
     $('#finalRating').show();
     
-
+    const userText = document.getElementById('userPara').value;
+    document.getElementById('userParagraph').textContent = userText;
+    $('#userParagraph').show();
+    
     document.body.style.setProperty('--background-url', `url('${coverURL}')`);
 
     const style = document.createElement('style');
