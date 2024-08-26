@@ -11,13 +11,14 @@
         <title>RecordRanker</title>
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <h2 id="heading" 
         style="text-align: center; font-family: 'Inter'; color:pink; letter-spacing: 2px;">
         Give each track a rating!
         </h2>
-        <div id="trackNumberName" style="text-align:center; font-family:'Courier New', Courier, monospace; padding-top: 20px;"></div>
+        <div id="trackNumberName" style="text-align:center; font-family:'Courier New', Courier, monospace; padding-top: 60px;"></div>
         
         <div class="center">
             <div style="text-align: center; padding-top: 20px;" id="dropdown">
@@ -31,24 +32,33 @@
                 </div>
             </div>
         </div>
+
+        <form id="userParaForm">
+            <textarea id="userPara" maxlength="200" required placeholder="💭 My thoughts on this album are . . ."></textarea>
+        </form>
         <div class="button-container" style="text-align: center;padding-top: 40px;">
             <button id="next_button" class="glowButton";>Next</button>
         </div>
-
+        <p id="title"></p>
         <div class="center-container">
-            <div class="top-layer">
-                <p id="title"></p>
+            <div class="left-side">
+                <ul id="trackRatings"></ul>
+            </div>
+
+            <div class="right-side">
+                <p id="finalRating"></p>
                 <div id="albumCover2">
                     <!-- Album cover will be displayed here -->
                 </div>
+                <ul id="colorGuide"></ul>
+                <p id="userParagraph" style="display: none;"></p>
+              <!--  
+                <ul id="additReview">
+                    <li> 🏆 Favorite</li>
+                </ul>  -->
             </div>
 
-            <div class="middle-layer">
-                <ul id="trackRatings"></ul>
-                <ul id="colorGuide"></ul>
-                
-            </div>
-            <p id="finalRating" ></p>
+
         </div>
 
             <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
