@@ -325,19 +325,18 @@ textarea {
 
 
 #title {
-  display: block;
-  width: fit-content;
-  list-style-type: none;
-  
-  border-radius: 5px;
-  margin: 3px;
+  margin: 0px;
   color: white;
   font-size: 1.2em;
-  background-color:dodgerblue;
   text-align: center;
-  padding: 5px;
   font-family: 'Montserrat';
   font-weight: 550;
+
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; 
 
   margin-left: auto;
   margin-right: auto;
@@ -346,31 +345,50 @@ textarea {
 #trackRatings {
   text-align: left;
   align-items: left;
-  overflow: hidden; 
+  overflow: auto; 
+  min-height: auto;
+  text-shadow: 
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px  1px 0 #000,
+      1px  1px 0 #000; 
 }
 
 #finalRating {
-  display: block;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 5px 0;
+  margin: 8px;
   color: white; 
-  font-size: 1.1em;
-  background-color:dodgerblue;
-  width: fit-content;
+  font-size: 1.5em;
+  padding-top: 10px;
+  text-shadow: 
+      -2px -2px 0 #000,  
+      2px -2px 0 #000,
+      -2px  2px 0 #000,
+      2px  2px 0 #000; 
 
   font-family: 'Montserrat';
   font-weight: 550;
-
 }
 
 #colorGuide {
-  width: 50%;
-  font-size: 0.7em;
+  display: none;
+  width: fit-content;
+  list-style-type: none;
+  padding: 5px;
+  
+  color: rgba(255, 255, 255, 0.889); 
+  font-size: 1.2em;
+  font-family: 'Montserrat';
+  font-weight: 530;
+  text-shadow: 
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px  1px 0 #000,
+      1px  1px 0 #000; 
+
+      overflow: hidden;
 }
 
 #albumCover2{
-  width: 100%;
 }
 
 #userParagraph {
@@ -379,8 +397,16 @@ textarea {
   border-radius: 5px;
   margin: 5px 0;
   color: white; 
-  font-size: 1.1em;
-  background-color:dodgerblue;
+  font-size: 1em;
   width: 200px;
+  font-family:'Montserrat';
+
+  text-shadow: 
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px  1px 0 #000,
+      1px  1px 0 #000; 
+  
+  background-color:#00000030
 }
 /* -------------------------------------------------------------------------- */
