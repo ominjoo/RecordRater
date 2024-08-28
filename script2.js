@@ -125,20 +125,13 @@ window.onclick = function(event) {
 function displayFinalReview(tracks, albumRating, ratingClasses, albumName, artistName) {
     $('#next_button').hide();
     $('#userParaForm').hide();
+    $("#colorGuide").show();
     let ratingsList = '';
-    const colorChart = [
-        '<li class="rating-block rating-perfect">PERFECT</li>',
-        '<li class="rating-block rating-amazing">AMAZING</li>',
-        '<li class="rating-block rating-good">GOOD</li>',
-        '<li class="rating-block rating-okay">OKAY</li>',
-        '<li class="rating-block rating-bad">BAD</li>'
-    ]; 
-    $('#colorGuide').html(colorChart);
     $('#albumCover2').html(`
-            <img src="${coverURL}" alt="" style="max-width: 240px;">
+            <img src="${coverURL}" alt="" style="max-width: 250px";>
         `);
 
-    $('#title').html("📻 Album Review: \"" + albumName + "\" by " + artistName);
+    $('#title').html("Album Review: <br>\"" + albumName + "\" by " + artistName);
     $('#title').show();
 
     tracks.forEach((track, index) => {
@@ -151,8 +144,10 @@ function displayFinalReview(tracks, albumRating, ratingClasses, albumName, artis
     
     const userText = document.getElementById('userPara').value;
     document.getElementById('userParagraph').textContent = userText;
-    $('#userParagraph').show();
-    
+    if(userText){
+        $('#userParagraph').show();
+    }
+
     document.body.style.setProperty('--background-url', `url('${coverURL}')`);
 
     const style = document.createElement('style');
