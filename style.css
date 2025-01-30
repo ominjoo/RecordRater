@@ -3,6 +3,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -26,14 +27,14 @@ body::before {
 h1 {
   font-family: 'Inter';
   letter-spacing: 2px;
-  color:pink
+  color: rgba(255, 255, 255, 0.867)
 }
 
 /* auto-typed */
 .subheading {
   font-family: 'Inter';
   padding-top: 20px;
-  color: rgba(0, 0, 0, 0.505)
+  color: rgba(255, 255, 255, 0.645)
 }
 
 footer {
@@ -68,7 +69,7 @@ input[type=text] {
 }
 
 input::placeholder {
-  color: rgba(255, 255, 255, 0.485);
+  color: rgb(255, 255, 255);
   font-size: 18px;
 }
 
@@ -140,7 +141,7 @@ input:hover {
     rgba(128, 0, 128, .25) 0 4px 8px, 
     rgba(128, 0, 128, .25) 0 8px 16px, 
     rgba(128, 0, 128, .25) 0 16px 32px; 
-  color:rgb(255, 192, 203); 
+  color:rgb(255, 255, 255); 
   cursor: pointer;
   display: inline-block;
   font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
@@ -388,8 +389,6 @@ textarea {
       overflow: hidden;
 }
 
-#albumCover2{
-}
 
 #userParagraph {
   display: block;
@@ -408,5 +407,23 @@ textarea {
       1px  1px 0 #000; 
   
   background-color:#00000030
+}
+
+
+
+
+
+@media print {
+  body{
+    background-color:rosybrown;
+  }
+  body::before {
+    background-image: none; /* Remove the background image */
+  }
+
+  #download {
+    display: none;
+  }
+
 }
 /* -------------------------------------------------------------------------- */

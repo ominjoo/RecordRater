@@ -125,6 +125,7 @@ window.onclick = function(event) {
 function displayFinalReview(tracks, albumRating, ratingClasses, albumName, artistName) {
     $('#next_button').hide();
     $('#userParaForm').hide();
+    $('#download').show();
     $("#colorGuide").show();
     let ratingsList = '';
     $('#albumCover2').html(`
@@ -162,5 +163,17 @@ function displayFinalReview(tracks, albumRating, ratingClasses, albumName, artis
     `;
     document.head.appendChild(style);
 
-    
+    document.getElementById('download').addEventListener('click', function() {
+        html2canvas(document.getElementById('final_page'), {
+            scale: 3, 
+            useCORS: true
+            }).then(function(canvas) {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF();
+
+            const imgHeight = (canvas.height * 190) / canvas.width;
+            pdf.addImage(imgData, 'PNG', 10, 0, 190, imgHeight);
+            pdf.save('RecordRater.pdf');
+        });
+    });
 }
